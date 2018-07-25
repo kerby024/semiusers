@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Edit</title>
+</head>
+<body>
+    {% for x in users%}
+    <h1>Edit User {{x.id}}</h1>
+    <form action="/update" method="post">
+        {% csrf_token %}
+        First Name<input type="text" name="f_name" value= "{{x.first_name}}" id=""><br>
+        Last Name<input type="text" name="l_name" value= "{{x.last_name}}" id=""><br>
+        Email<input type="email" name="email" value= "{{x.email}}" id=""><br>
+        <input type="hidden" name="userid" value="{{x.id}}" id="">
+        <input type="submit" value="Update">
+    </form>
+    {% endfor %}
+</body>
+</html>

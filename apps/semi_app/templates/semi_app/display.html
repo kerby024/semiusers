@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- {% load static %}
+    <link rel="stylesheet" href="{% static 'db_app/styles.css' %}" media="screen" title="no title"  charset="utf-8"> -->
+    <title>Dashboard</title>
+    <style>
+    table, th, td {
+        border: 2px solid black;
+        border-collapse: collapse;
+        padding: 5px;
+    }
+    </style>
+</head>
+<body>
+    <h1>Users</h1>
+    <table id="table">
+        <tr>
+            <th>id</th>
+            <th>Name</th> 
+            <th>Email</th>
+            <th>Created at</th>
+            <th>Action</th>
+        </tr>
+        {% for user in users %}        
+        <tr>
+            <td>
+                {{user.id}}
+            </td>
+            <td>
+                {{user.first_name}} {{user.last_name}}
+            </td>
+            <td>
+                {{user.email}}
+            </td>
+            <td>
+                {{user.created_at}}
+            </td>
+            <td>
+                <a href="/user/{{user.id}}">Show</a>
+                <a href="/user/{{user.id}}/edit">Edit</a>
+                <a href="/user/{{user.id}}/delete">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    <a href="/adduser">Add a new user</a>
+</html>
